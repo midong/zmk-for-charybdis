@@ -95,7 +95,7 @@
         compatible = "zmk,behavior-tap-dance";
         label = "CONTROL_ALT_TAP_DANCE";
         #binding-cells = <0>;
-        bindings = <&kp LEFT_CONTROL>, <&kp LEFT_ALT>;
+        bindings = <&kp LEFT_CONTROL>, <&kp A>;
 
         tapping-term-ms = <1000>;
     };
@@ -134,7 +134,7 @@
 
             sensor-bindings =
                 <&scroll_vertical_encoder>,
-                // 编码器1：上下滚动,,,,,,
+                // 编码器1：上下滚动,,,,,,,
                 <&scroll_horizontal_encoder>;
 
             // 编码器2：左右滚动            
@@ -151,7 +151,7 @@
 
             sensor-bindings =
                 <&scroll_horizontal_encoder>,
-                // 编码器1：左右滚动    ,,,,,,
+                // 编码器1：左右滚动    ,,,,,,,
                 <&scroll_vertical_encoder>;
 
             // 编码器2：上下滚动
