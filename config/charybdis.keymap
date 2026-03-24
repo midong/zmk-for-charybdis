@@ -91,6 +91,13 @@
         flavor = "tap-preferred";
     };
 
+    control_alt_tap_dance: control_alt_tap_dance {
+        compatible = "zmk,behavior-tap-dance";
+        label = "CONTROL_ALT_TAP_DANCE";
+        #binding-cells = <0>;
+        bindings = <&kp LEFT_CONTROL>, <&kp LEFT_ALT>;
+    };
+
     behaviors {
     };
 
@@ -99,15 +106,15 @@
 
         base {
             bindings = <
-&kp ESC         &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U         &kp I          &kp O    &kp P     &kp BSPC
-&kp TAB         &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J         &kp K          &kp L    &kp SEMI  &kp APOS
-&kp LEFT_SHIFT  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M         &kp COMMA      &kp DOT  &kp FSLH  &kp RIGHT_SHIFT
-                              &kp LCTRL  &kp SPACE  &mo 1    &mo 2  &kp KP_ENTER  &kp BACKSPACE
+&kp ESC                 &kp Q  &kp W  &kp E           &kp R      &kp T    &kp Y  &kp U         &kp I            &kp O    &kp P     &kp BSPC
+&kp TAB                 &kp A  &kp S  &kp D           &kp F      &kp G    &kp H  &kp J         &kp K            &kp L    &kp SEMI  &kp APOS
+&control_alt_tap_dance  &kp Z  &kp X  &kp C           &kp V      &kp B    &kp N  &kp M         &kp COMMA        &kp DOT  &kp FSLH  &kp LEFT_ALT
+                                      &kp LEFT_SHIFT  &kp SPACE  &mo 1    &mo 2  &kp KP_ENTER  &kp RIGHT_SHIFT
             >;
 
             sensor-bindings =
                 <&scroll_vertical_encoder>,
-                // 编码器1：上下滚动,,
+                // 编码器1：上下滚动,,,
                 <&scroll_horizontal_encoder>;
 
             // 编码器2：左右滚动            
@@ -116,15 +123,15 @@
 
         num_layer {
             bindings = <
-&trans     &trans  &kp N1  &kp N2  &kp N3  &mo 3      &kp F7     &kp F8          &kp UP_ARROW  &kp F10    &kp F11        &kp F12
-&trans     &trans  &kp N4  &kp N5  &kp N6  &mkp MB2    &kp LBKT   &kp LEFT        &kp DOWN      &kp RIGHT  &kp BACKSLASH  &kp PIPE
-&kp LSHFT  &trans  &kp N7  &kp N8  &kp N9  &mkp MB1    &kp MINUS  &kp UNDERSCORE  &kp EQUAL     &kp PLUS   &kp GRAVE      &kp TILDE
-                           &trans  &trans  &trans      &trans     &trans          &kp DEL
+&kp GRAVE  &trans         &kp N1  &kp N2  &kp N3  &mo 4       &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp UP_ARROW  &trans     &trans  &kp DEL
+&trans     &kp RIGHT_ALT  &kp N4  &kp N5  &kp N6  &mkp MB2    &trans            &kp LEFT           &kp DOWN      &kp RIGHT  &trans  &kp BACKSLASH
+&trans     &kp N0         &kp N7  &kp N8  &kp N9  &mkp MB1    &kp MINUS         &kp EQUAL          &trans        &trans     &trans  &trans
+                                  &trans  &trans  &trans      &trans            &trans             &trans
             >;
 
             sensor-bindings =
                 <&scroll_horizontal_encoder>,
-                // 编码器1：左右滚动    ,,
+                // 编码器1：左右滚动    ,,,
                 <&scroll_vertical_encoder>;
 
             // 编码器2：上下滚动
@@ -132,23 +139,24 @@
 
         func_layer {
             bindings = <
-&trans  &trans  &kp F1  &kp F2  &kp F3  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp F4  &kp F5  &kp F6  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp F7  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp F12  &kp F1  &kp F2  &kp F3  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp F11  &kp F4  &kp F5  &kp F6  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp F10  &kp F7  &kp F8  &kp F9  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                         &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        other_layer {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
                         &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
-other_layer {
-        bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
-            >;
-        };
-scroll_layer {
-        bindings = <
+        scroll_layer {
+            bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
