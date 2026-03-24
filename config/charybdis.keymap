@@ -60,66 +60,64 @@
         };
     };
 
-    
     behaviors {
-// 上下滚动编码器行为
+        // 上下滚动编码器行为
 
-    scroll_vertical_encoder: scroll_vertical_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+        scroll_vertical_encoder: scroll_vertical_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
 
-        tap-ms = <100>;
-    };
+            tap-ms = <100>;
+        };
 
-    // 左右滚动编码器行为
+        // 左右滚动编码器行为
 
-    scroll_horizontal_encoder: scroll_horizontal_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
+        scroll_horizontal_encoder: scroll_horizontal_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
 
-        tap-ms = <100>;
-    };
+            tap-ms = <100>;
+        };
 
-    my_hold_tap: my_hold_tap {
-        compatible = "zmk,behavior-hold-tap";
-        label = "MY_HOLD_TAP";
-        bindings = <&kt>, <&hangle_shift_mod>;
+        my_hold_tap: my_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MY_HOLD_TAP";
+            bindings = <&kt>, <&hangle_shift_mod>;
 
-        #binding-cells = <2>;
-        tapping-term-ms = <200>;
-        quick-tap-ms = <130>;
-        flavor = "tap-preferred";
-    };
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <130>;
+            flavor = "tap-preferred";
+        };
 
-    control_alt_tap_dance: control_alt_tap_dance {
-        compatible = "zmk,behavior-tap-dance";
-        label = "CONTROL_ALT_TAP_DANCE";
-        #binding-cells = <0>;
-        bindings = <&kp LEFT_CONTROL>, <&kp A>;
+        control_alt_tap_dance: control_alt_tap_dance {
+            compatible = "zmk,behavior-tap-dance";
+            label = "CONTROL_ALT_TAP_DANCE";
+            #binding-cells = <0>;
+            bindings = <&kp B>, <&kp A>;
 
-        tapping-term-ms = <500>;
-    };
+            tapping-term-ms = <200>;
+        };
 
-    shift_sticky: shift_sticky {
-        compatible = "zmk,behavior-sticky-key";
-        label = "SHIFT_STICKY";
-        bindings = <&kp>;
-        #binding-cells = <1>;
-        quick-release;
-        release-after-ms = <1000>;
-    };
+        shift_sticky: shift_sticky {
+            compatible = "zmk,behavior-sticky-key";
+            label = "SHIFT_STICKY";
+            bindings = <&kp>;
+            #binding-cells = <1>;
+            quick-release;
+            release-after-ms = <1000>;
+        };
 
-    hangle_shift_mod: hangle_shift_mod {
-        compatible = "zmk,behavior-mod-morph";
-        label = "HANGLE_SHIFT_MOD";
-        bindings = <&shift_sticky LEFT_SHIFT>, <&kp RIGHT_ALT>;
+        hangle_shift_mod: hangle_shift_mod {
+            compatible = "zmk,behavior-mod-morph";
+            label = "HANGLE_SHIFT_MOD";
+            bindings = <&shift_sticky LEFT_SHIFT>, <&kp RIGHT_ALT>;
 
-        #binding-cells = <0>;
-        mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     keymap {
@@ -135,7 +133,7 @@
 
             sensor-bindings =
                 <&scroll_vertical_encoder>,
-                // 编码器1：上下滚动,,,,,,,,
+                // 编码器1：上下滚动,,,,,,,,,
                 <&scroll_horizontal_encoder>;
 
             // 编码器2：左右滚动            
@@ -152,7 +150,7 @@
 
             sensor-bindings =
                 <&scroll_horizontal_encoder>,
-                // 编码器1：左右滚动    ,,,,,,,,
+                // 编码器1：左右滚动    ,,,,,,,,,
                 <&scroll_vertical_encoder>;
 
             // 编码器2：上下滚动
