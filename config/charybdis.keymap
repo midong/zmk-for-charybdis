@@ -116,7 +116,7 @@
 
         m1 {
             bindings = <
-&trans     &trans  &kp N1  &kp N2  &kp N3  &trans      &kp F7     &kp F8          &kp UP_ARROW  &kp F10    &kp F11        &kp F12
+&trans     &trans  &kp N1  &kp N2  &kp N3  &mo 3      &kp F7     &kp F8          &kp UP_ARROW  &kp F10    &kp F11        &kp F12
 &trans     &trans  &kp N4  &kp N5  &kp N6  &mkp MB2    &kp LBKT   &kp LEFT        &kp DOWN      &kp RIGHT  &kp BACKSLASH  &kp PIPE
 &kp LSHFT  &trans  &kp N7  &kp N8  &kp N9  &mkp MB1    &kp MINUS  &kp UNDERSCORE  &kp EQUAL     &kp PLUS   &kp GRAVE      &kp TILDE
                            &trans  &trans  &trans      &trans     &trans          &kp DEL
@@ -135,6 +135,15 @@
 &trans  &trans  &kp F1  &kp F2  &kp F3  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &kp F4  &kp F5  &kp F6  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &kp F7  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+scroll_layer {
+        bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
                         &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
