@@ -84,8 +84,36 @@
         compatible = "zmk,behavior-tap-dance";
         label = "CONTROL_ALT_TAP_DANCE";
         #binding-cells = <0>;
-        bindings = <&kp B>, <&kp A>;
+        bindings = <&kp LEFT_CONTROL>, <&kp LEFT_ALT>;
 
+        tapping-term-ms = <200>;
+    };
+
+    shift_stickey: shift_stickey {
+        compatible = "zmk,behavior-sticky-key";
+        label = "SHIFT_STICKEY";
+        bindings = <&kp>;
+        #binding-cells = <1>;
+        release-after-ms = <1000>;
+        quick-release;
+    };
+
+    hangle_mod: hangle_mod {
+        compatible = "zmk,behavior-mod-morph";
+        label = "HANGLE_MOD";
+        bindings = <&shift_stickey LEFT_SHIFT>, <&kp LANG_HANGEUL>;
+
+        #binding-cells = <0>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    shift_hangle_hold_tap: shift_hangle_hold_tap {
+        compatible = "zmk,behavior-hold-tap";
+        label = "SHIFT_HANGLE_HOLD_TAP";
+        bindings = <&kt>, <&hangle_mod>;
+
+        #binding-cells = <2>;
+        flavor = "tap-preferred";
         tapping-term-ms = <200>;
     };
 
@@ -97,15 +125,15 @@
 
         base {
             bindings = <
-&kp ESC                 &kp Q  &kp W  &kp E           &kp R      &kp T    &kp Y  &kp U         &kp I            &kp O    &kp P     &kp BSPC
-&kp TAB                 &kp A  &kp S  &kp D           &kp F      &kp G    &kp H  &kp J         &kp K            &kp L    &kp SEMI  &kp APOS
-&control_alt_tap_dance  &kp Z  &kp X  &kp C           &kp V      &kp B    &kp N  &kp M         &kp COMMA        &kp DOT  &kp FSLH  &control_alt_tap_dance
-                                      &kp LEFT_SHIFT  &kp SPACE  &mo 1    &mo 2  &kp KP_ENTER  &kp RIGHT_SHIFT
+&kp ESC                 &kp Q  &kp W  &kp E                                  &kp R      &kp T    &kp Y  &kp U         &kp I            &kp O    &kp P     &kp BSPC
+&kp TAB                 &kp A  &kp S  &kp D                                  &kp F      &kp G    &kp H  &kp J         &kp K            &kp L    &kp SEMI  &kp APOS
+&control_alt_tap_dance  &kp Z  &kp X  &kp C                                  &kp V      &kp B    &kp N  &kp M         &kp COMMA        &kp DOT  &kp FSLH  &control_alt_tap_dance
+                                      &shift_hangle_hold_tap LANG_HANGEUL 0  &kp SPACE  &mo 1    &mo 2  &kp KP_ENTER  &kp RIGHT_SHIFT
             >;
 
             sensor-bindings =
                 <&scroll_vertical_encoder>,
-                // 编码器1：上下滚动,,,,,,,,,,
+                // 编码器1：上下滚动,,,,,,,,,,,
                 <&scroll_horizontal_encoder>;
 
             // 编码器2：左右滚动            
@@ -122,7 +150,7 @@
 
             sensor-bindings =
                 <&scroll_horizontal_encoder>,
-                // 编码器1：左右滚动    ,,,,,,,,,,
+                // 编码器1：左右滚动    ,,,,,,,,,,,
                 <&scroll_vertical_encoder>;
 
             // 编码器2：上下滚动
