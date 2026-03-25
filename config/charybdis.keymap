@@ -17,7 +17,7 @@
     quick-tap-ms = <150>;
 };
 
-&mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
+// &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
 
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
@@ -28,9 +28,9 @@
 };
 
 &mmv {
-    time-to-max-speed-ms = <300>;
-    acceleration-exponent = <1>;
-    trigger-period-ms = <16>;
+    time-to-max-speed-ms = <0>;  // 300
+    acceleration-exponent = <0>;  // 1
+    trigger-period-ms = <8>;  //16
 };
 
 / {
